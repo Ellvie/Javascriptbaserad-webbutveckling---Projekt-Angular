@@ -12,22 +12,22 @@ export class ShoppinglistService {
 
     //GET
     getShoppinglists(): Observable<any> {
-        return this.http.get('http://localhost:3000/shoppinglists')
+        return this.http.get('https://miun-shoppinglist-api.herokuapp.com/shoppinglists')
     }
 
     //POST
     postShoppinglist(shoppinglist: Shoppinglist): Observable<any> {
-        return this.http.post('http://localhost:3000/shoppinglists', shoppinglist);
+        return this.http.post('https://miun-shoppinglist-api.herokuapp.com/shoppinglists', shoppinglist);
     } 
 
     //DELETE
     deleteShoppinglist(id: string): Observable<any> {
-        return this.http.delete('http://localhost:3000/shoppinglists/' + id);
+        return this.http.delete('https://miun-shoppinglist-api.herokuapp.com/shoppinglists/' + id);
     }
 
     //PUT
     putShoppinglist(shoppinglist: Shoppinglist): Observable<any> {
-        return this.http.put('http://localhost:3000/shoppinglists/' + shoppinglist._id,shoppinglist);
+        return this.http.put('https://miun-shoppinglist-api.herokuapp.com/shoppinglists/' + shoppinglist._id,shoppinglist);
     }
 }
 
