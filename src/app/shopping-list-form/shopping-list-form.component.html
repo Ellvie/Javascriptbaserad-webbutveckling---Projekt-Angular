@@ -1,0 +1,52 @@
+<!--HTML for child component-->
+
+<!--Check if shoppinglist exists-->
+<div *ngIf="shoppinglist">
+  <div>
+    <!--Form-->
+    <form class="formName">
+      <label for="shoppinglistName">Shoppinglist name:</label><br />
+      <input
+        type="text"
+        id="shoppinglistName"
+        name="shoppinglistName"
+        value="{{ shoppinglist.name }}"
+        [(ngModel)]="newName"
+      /><!--ngModel bindes the value to the variable (newName)-->
+
+      <!--Button to add-->
+      <button (click)="saveShoppinglist()" title="Save shoppinglist">✅</button>
+      <!--Button to delete shoppinglist-->
+      <button
+        (click)="deleteShoppinglist(shoppinglist)"
+        class="deleteButton"
+        title="Delete shoppinglist"
+      >
+        ❌
+      </button>
+    </form>
+  </div>
+
+  <!--Loop through the items in the shoppinglist-->
+  <ul *ngFor="let item of shoppinglist.items; let i = index" class="item">
+    <li>
+      {{ item }}
+      <!--Button to remove item-->
+      <button (click)="removeItem(i)" title="Delete item">❌</button>
+    </li>
+  </ul>
+
+  <!--Check if the name field is empty-->
+  <form *ngIf="shoppinglist.name" class="formItem">
+    <label for="shoppinglistItem">New item:</label><br />
+    <input
+      type="text"
+      id="shoppinglistItem"
+      name="shoppinglistItem"
+      [(ngModel)]="shoppinglistItem"
+    /><!--ngModel bindes the value to the variable (shoppinglistItem)-->
+
+    <!--Save item-->
+    <button (click)="saveItem()" title="Save item">✅</button>
+  </form>
+</div>

@@ -1,0 +1,29 @@
+<!--Component HTML template for shoppinglist form -->
+
+<div class="lists">
+  <div class="addButton">
+    <h2>Shoppinglists:</h2>
+    <!--Button to add new shoppinglist-->
+    <button (click)="addNewShoppinglist()" title="Add new shoppinglist">
+      ➕
+    </button>
+  </div>
+  <!--Looping through the shoppinglists-->
+  <ul *ngFor="let shoppinglist of shoppinglists">
+    <!--Li with click event to run function-->
+    <li class="click" (click)="editShoppinglist(shoppinglist)">
+      {{ shoppinglist.name }}
+    </li>
+  </ul>
+</div>
+<!--Hidden form for when add is not clicked-->
+<div [hidden]="!showForm" class="compWrapper">
+  <app-shopping-list-form
+    [shoppinglist]="shoppinglist"
+    [isNew]="isNew"
+    (notifyAdd)="onNotifyAdd($event)"
+    (notifyRemove)="onNotifyRemove($event)"
+    (notifyUpdate)="onNotifyUpdate($event)"
+    (closeForm)="onCloseForm($event)"
+  ></app-shopping-list-form>
+</div>
