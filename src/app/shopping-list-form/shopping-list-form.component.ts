@@ -58,7 +58,7 @@ export class ShoppingListFormComponent implements OnInit {
     //Set new name
     this.shoppinglist.name = this.newName;
     //Check if it's a new shoopinglist
-    if(this.isNew) {
+    if(this.isNew || !this.shoppinglist._id) {
       //Call API
       this._service.postShoppinglist(this.shoppinglist).subscribe(
         data => {
